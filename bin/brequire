@@ -35,6 +35,6 @@ function compile(path, file) {
   return "require.module('" + file + "', function(exports, require) {\n// start module \n\n" + txt + "\n\n// end module\n})"
 }
 
-SRC = path.join(process.cwd(), process.ARGV[2])
-DEST = path.join(process.cwd(), process.ARGV[3])
+SRC  = (path.join(process.cwd(), process.ARGV[2]) +"/").replace(/\/\//,"/")  // why do we do this ?!
+DEST = (path.join(process.cwd(), process.ARGV[3]) +"/").replace(/\/\//,"/")  // why do we do this ?!
 compileDir(SRC, DEST)
