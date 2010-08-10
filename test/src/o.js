@@ -1,0 +1,1 @@
+exports.o = {x: "first"}
