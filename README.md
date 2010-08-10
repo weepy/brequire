@@ -23,6 +23,7 @@ Example
 
 run:
 
-bin/require test/src test/lib
+bin/brequire test/src test/lib
+open test/index.html
 
-then open test/index.html in a browser (with the console open)
+
