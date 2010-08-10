@@ -27,3 +27,6 @@ bin/brequire test/src test/lib
 open test/index.html
 
 
+to install:
+
+sudo cp bin/brequire /usr/local/bin
