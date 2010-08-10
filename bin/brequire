@@ -35,6 +35,10 @@ function compile(path, file) {
   return "require.module('" + file + "', function(exports, require) {\n// start module \n\n" + txt + "\n\n// end module\n})"
 }
 
+if (!process.ARGV[2] || !process.ARGV[3]) {
+   console.log("usage: \nbrequire rel/path/to/sourceDir rel/path/to/targetDir")
+   return
+}
 SRC  = (path.join(process.cwd(), process.ARGV[2]) +"/").replace(/\/\//,"/")  // why do we do this ?!
 DEST = (path.join(process.cwd(), process.ARGV[3]) +"/").replace(/\/\//,"/")  // why do we do this ?!
 compileDir(SRC, DEST)
