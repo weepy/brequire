@@ -32,7 +32,7 @@ function compileDir(source, dest) {
 function compile(path, file) {
   var txt = fs.readFileSync(path)
   file = file.replace(/^\/lib/, "").replace(/.js$/,"")
-  return "require.module('" + file + "', function(exports, require) {\n// start module \n\n" + txt + "\n\n// end module\n})"
+  return "require.module('./" + file + "', function(exports, require) {\n// start module \n\n" + txt + "\n\n// end module\n})"
 }
 
 if (!process.ARGV[2] || !process.ARGV[3]) {

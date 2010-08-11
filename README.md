@@ -27,6 +27,6 @@ bin/brequire test/src test/lib
 open test/index.html
 
 
-to install:
+to install compiler:
 
 sudo cp bin/brequire /usr/local/bin
