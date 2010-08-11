@@ -24,7 +24,7 @@ Example
 run:
 
 bin/brequire test/src test/lib
-open test/index.html
+open test/test.html
 
 
 to install compiler:

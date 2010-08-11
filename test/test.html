@@ -1,0 +1,24 @@
+<html>
+<head>
+  <script src='../lib/brequire.js'></script>
+  <script src='lib/a.js'></script>
+  <script src='lib/b.js'></script>
+  <script src='lib/o.js'></script>
+  <script src='lib/c/c.js'></script>
+</head>
+<body>
+  <h2>Brequire Tests </h2>
+</body>
+<script>
+function log() {
+  var args = Array.prototype.slice.call(arguments, 0).join(", ")
+  document.body.innerHTML += "<p>"  + args + "</p>"
+}
+
+log(require("./b").one, "= 1")
+log(require("./b").two, "= 2")
+log(typeof two, "= undefined")
+log(typeof x, "= undefined")
+
+</script>
+</html>
