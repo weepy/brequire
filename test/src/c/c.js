@@ -1,2 +1,2 @@
-exports.two = require("../a").two
-exports.x = "error"
+exports.two = require("../a").two;
+exports.x = "error";

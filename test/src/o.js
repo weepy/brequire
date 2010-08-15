@@ -1,1 +1,1 @@
-exports.o = {x: "first"}
+exports.o = {x: "first"};

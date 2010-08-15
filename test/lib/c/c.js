@@ -1,8 +1,8 @@
 require.module('./c/c', function(exports, require) {
-// start module 
+// start module: c/c
 
-exports.two = require("../a").two
-exports.x = "error"
+exports.two = require("../a").two;
+exports.x = "error";
 
-// end module
-})
+// end module: c/c
+});

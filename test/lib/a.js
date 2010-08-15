@@ -1,13 +1,13 @@
 require.module('./a', function(exports, require) {
-// start module 
+// start module: a
 
-exports.one = 1
-exports.two = 2
-exports.x = "ok"
-log("should only see me once")
+exports.one = 1;
+exports.two = 2;
+exports.x = "ok";
+log("should only see me once");
 
-var o = require("./o").o
-o.x = "second"
+var o = require("./o").o;
+o.x = "second";
 
-// end module
-})
+// end module: a
+});

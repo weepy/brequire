@@ -1,7 +1,7 @@
 require.module('./o', function(exports, require) {
-// start module 
+// start module: o
 
-exports.o = {x: "first"}
+exports.o = {x: "first"};
 
-// end module
-})
+// end module: o
+});
