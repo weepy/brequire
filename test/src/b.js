@@ -5,3 +5,5 @@ exports.one = require("./a").one;
 log(o.x, "= second");
 exports.two = require("./c/c").two;
 
+log(require("./x")(), "= 1234")
+

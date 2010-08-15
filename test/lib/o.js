@@ -1,4 +1,4 @@
-require.module('./o', function(exports, require) {
+require.module('./o', function(module, exports, require) {
 // start module: o
 
 exports.o = {x: "first"};

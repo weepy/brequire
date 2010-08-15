@@ -1,4 +1,4 @@
-require.module('./a', function(exports, require) {
+require.module('./a', function(module, exports, require) {
 // start module: a
 
 exports.one = 1;
