@@ -9,24 +9,27 @@ It has two parts:
 
 2) A simple require script
 
+Install
+------
+
+sudo bin/install
+
 Use
 ---
 
-bin/brequire source dest
+brequire source dest
 
 This will recursively compile all .js files in source to a target directory (dest)
 
 The scripts can be loaded by any means and 'required' into the main scope as necessary.
 
-Example
--------
+Test
+----
 
 run:
 
 bin/brequire test/src test/lib
-open test/test.html
 
+then:
 
-to install compiler:
-
-sudo cp bin/brequire /usr/local/bin
+open test/index.html
