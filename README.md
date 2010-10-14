@@ -12,7 +12,7 @@ It has two parts:
 Install
 ------
 
-sudo bin/install
+npm install brequire
 
 Use
 ---
@@ -28,7 +28,7 @@ Test
 
 run:
 
-bin/brequire test/src test/lib
+brequire test/src test/lib
 
 then:
 

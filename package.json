@@ -1,0 +1,10 @@
+{
+  "name": "brequire",
+  "version": "0.0.2",
+  "description": "Brings exact CommonJS (require, exports) functionality to the Browser.",
+  "author": "weepy",
+  "bin": "./bin/brequire",
+  "repository": "http://github.com/weepy/brequire",
+  "dependencies": {},  
+  "engines" : { "node": ">= 0.2.0" }
+}
