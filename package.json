@@ -1,10 +1,19 @@
 {
   "name": "brequire",
-  "version": "0.0.2",
-  "description": "Brings exact CommonJS (require, exports) functionality to the Browser.",
+  "version": "0.0.3",
+  "description": "Use CommonJS (require, exports) functionality in the browser",
   "author": "weepy",
   "bin": "./bin/brequire",
+  "author": "weepy",
+  "licenses":     [{
+    "type":       "MIT",
+    "url": "http://github.com/weepy/brequire/raw/master/LICENSE"
+  }],
+  "directories" : {
+    "lib" : "./lib"
+  },
   "repository": "http://github.com/weepy/brequire",
   "dependencies": {},  
-  "engines" : { "node": ">= 0.2.0" }
+  "engines" : { "node": ">= 0.2.0" },
+  "main": "./lib/brequire"
 }

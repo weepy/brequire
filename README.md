@@ -33,3 +33,4 @@ brequire test/src test/lib
 then:
 
 open test/index.html
+
