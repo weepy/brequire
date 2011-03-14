@@ -2,7 +2,7 @@
 function require(p) {
   var path = require.resolve(p)
   var module = require.modules[path];
-  if(!module) throw("couldn't find module for: " + path);
+  if(!module) throw("couldn't find module for: " + p);
   if(!module.exports) {
     module.exports = {};
     module.call(module.exports, module, module.exports, require.bind(path));
