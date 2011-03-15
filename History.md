@@ -1,3 +1,8 @@
+0.0.4 
+=====
+
+  * directories are not source files
+
 0.0.3 / 2010-11-03
 ==================
 

@@ -1,6 +1,6 @@
 {
   "name": "brequire",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Use CommonJS (require, exports) functionality in the browser",
   "author": "weepy",
   "licenses":     [{
