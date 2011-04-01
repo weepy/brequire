@@ -38,6 +38,6 @@ require.bind = function(path) {
   };
 };
 
-require.module = function(path, fn) {
+require.register = function(path, fn) {
   require.modules[path] = fn;
 };

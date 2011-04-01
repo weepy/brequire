@@ -1,6 +1,6 @@
 {
   "name": "brequire",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Use CommonJS (require, exports) functionality in the browser",
   "author": "weepy",
   "licenses":     [{
@@ -12,6 +12,6 @@
   },
   "repository": "http://github.com/weepy/brequire",
   "dependencies": {"glob": ">= 0.2.0"},  
-  "engines" : { "node": ">= 0.4.2", "npm": ">= 0.3"},
+  "engines" : { "node": ">= 0.4.2"},
   "main": "./lib/brequire"
 }
