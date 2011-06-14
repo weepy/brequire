@@ -1,0 +1,399 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '.' ]
+info using npm@1.0.6
+info using node@v0.4.4
+verbose config file /Users/weepy/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose publish [ '.' ]
+silly testEngine { name: 'brequire',
+silly testEngine   version: '0.0.6',
+silly testEngine   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly testEngine   author: { name: 'weepy' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/weepy/brequire/raw/master/LICENSE' } ],
+silly testEngine   directories: { lib: './lib' },
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/weepy/brequire.git' },
+silly testEngine   engines: { node: '>= 0.4.2' },
+silly testEngine   main: './lib/brequire',
+silly testEngine   dependencies: {},
+silly testEngine   devDependencies: {},
+silly testEngine   _id: 'brequire@0.0.6',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.4',
+silly testEngine   _defaultsLoaded: true }
+verbose caching package.json
+verbose loadDefaults brequire@0.0.6
+verbose pack /Users/weepy/src/brequire /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/tmp.tgz
+silly testEngine { name: 'brequire',
+silly testEngine   version: '0.0.6',
+silly testEngine   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly testEngine   author: { name: 'weepy' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/weepy/brequire/raw/master/LICENSE' } ],
+silly testEngine   directories: { lib: './lib' },
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/weepy/brequire.git' },
+silly testEngine   engines: { node: '>= 0.4.2' },
+silly testEngine   main: './lib/brequire',
+silly testEngine   dependencies: {},
+silly testEngine   devDependencies: {},
+silly testEngine   _id: 'brequire@0.0.6',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.4',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/Users/weepy/src/brequire' }
+verbose caching /Users/weepy/src/brequire/package.json
+verbose loadDefaults brequire@0.0.6
+verbose mkdir done: /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205 755
+verbose mkdir'ed /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205
+verbose tar about to write tar and gzip it.
+silly tar args [ '-cvf',
+silly tar args   '-',
+silly tar args   'brequire/History.md',
+silly tar args   'brequire/LICENSE',
+silly tar args   'brequire/package.json',
+silly tar args   'brequire/README.md',
+silly tar args   'brequire/Tutorial',
+silly tar args   'brequire/bin/brequire',
+silly tar args   'brequire/bin/install',
+silly tar args   'brequire/browser/brequire.js',
+silly tar args   'brequire/lib/brequire-async.js',
+silly tar args   'brequire/lib/brequire.js',
+silly tar args   'brequire/test/index.html',
+silly tar args   'brequire/test/test_all.js',
+silly tar args   'brequire/test/node/node.js',
+silly tar args   'brequire/test/single/single.js',
+silly tar args   'brequire/test/lib/a.js',
+silly tar args   'brequire/test/lib/b.js',
+silly tar args   'brequire/test/lib/o.js',
+silly tar args   'brequire/test/lib/x.js',
+silly tar args   'brequire/test/lib/c/c.js',
+silly tar args   'brequire/test/shape/pi.js',
+silly tar args   'brequire/test/shape/shape.js',
+silly tar args   'brequire/test/shape/shapes/circle.js',
+silly tar args   'brequire/test/src/a.js',
+silly tar args   'brequire/test/src/b.js',
+silly tar args   'brequire/test/src/o.js',
+silly tar args   'brequire/test/src/x.js',
+silly tar args   'brequire/test/src/c/c.js',
+silly tar args   'brequire/test/user/index.js',
+silly tar args   'brequire/test/user/admin/index.js',
+silly tar args   'brequire/test/browser/test_brequire.html',
+silly tar args   'brequire/test/browser/lib/brequire.js',
+silly tar args   'brequire/test/browser/lib/pi.js',
+silly tar args   'brequire/test/browser/lib/shape.bundle.js',
+silly tar args   'brequire/test/browser/lib/shape.js',
+silly tar args   'brequire/test/browser/lib/user_alt.bundle.js',
+silly tar args   'brequire/test/browser/lib/shapes/circle.js',
+silly tar args   'brequire/test/browser/lib/single/single.js' ]
+verbose success tar -cvf - <file list elided>
+verbose success gzip "--stdout"
+verbose mkdir done: /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package
+silly gunzTarPerm modes [ '755', '644' ]
+verbose success gzip "--decompress" "--stdout" "/var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/tmp.tgz"
+verbose success tar "-mvxpf" "-" "--no-same-owner" "-C" "/var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm"
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/History.md
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/LICENSE
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/package.json
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/README.md
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/Tutorial
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/bin/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/bin/brequire
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/bin/install
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/browser/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/browser/brequire.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/lib/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/lib/brequire-async.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/lib/brequire.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/index.html
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/test_all.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/node/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/node/node.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/single/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/single/single.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/a.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/b.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/o.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/x.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/c/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/lib/c/c.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/shape/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/shape/pi.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/shape/shape.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/shape/shapes/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/shape/shapes/circle.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/a.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/b.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/o.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/x.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/c/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/src/c/c.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/user/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/user/index.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/user/admin/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/user/admin/index.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/test_brequire.html
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/brequire.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/pi.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/shape.bundle.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/shape.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/user_alt.bundle.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/shapes/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/shapes/circle.js
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/single/
+silly asyncMap in gTP /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire/test/browser/lib/single/single.js
+verbose gunzed /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire
+verbose rm'ed /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package
+verbose renamed [ '/var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/___package.npm/brequire',
+verbose renamed   '/var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package' ]
+silly testEngine { name: 'brequire',
+silly testEngine   version: '0.0.6',
+silly testEngine   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly testEngine   author: { name: 'weepy' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/weepy/brequire/raw/master/LICENSE' } ],
+silly testEngine   directories: { lib: './lib' },
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/weepy/brequire.git' },
+silly testEngine   engines: { node: '>= 0.4.2' },
+silly testEngine   main: './lib/brequire',
+silly testEngine   dependencies: {},
+silly testEngine   devDependencies: {},
+silly testEngine   _id: 'brequire@0.0.6',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.4',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package' }
+verbose caching /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package/package.json
+verbose loadDefaults brequire@0.0.6
+verbose tarball contents [ 'package' ]
+verbose from cache /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package/package.json
+verbose pack /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package /Users/weepy/.npm/brequire/0.0.6/package.tgz
+verbose from cache /var/folders/D7/D76Pso6NGweTQFP66Z0ASU+++TI/-Tmp-/npm-1308063524975/1308063524975-0.34005857654847205/contents/package/package.json
+verbose mkdir done: /Users/weepy/.npm/brequire/0.0.6 755
+verbose mkdir'ed /Users/weepy/.npm/brequire/0.0.6
+verbose tar about to write tar and gzip it.
+silly tar args [ '-cvf',
+silly tar args   '-',
+silly tar args   'package/History.md',
+silly tar args   'package/LICENSE',
+silly tar args   'package/package.json',
+silly tar args   'package/README.md',
+silly tar args   'package/Tutorial',
+silly tar args   'package/bin/brequire',
+silly tar args   'package/bin/install',
+silly tar args   'package/browser/brequire.js',
+silly tar args   'package/lib/brequire-async.js',
+silly tar args   'package/lib/brequire.js',
+silly tar args   'package/test/index.html',
+silly tar args   'package/test/test_all.js',
+silly tar args   'package/test/node/node.js',
+silly tar args   'package/test/single/single.js',
+silly tar args   'package/test/lib/a.js',
+silly tar args   'package/test/lib/b.js',
+silly tar args   'package/test/lib/o.js',
+silly tar args   'package/test/lib/x.js',
+silly tar args   'package/test/lib/c/c.js',
+silly tar args   'package/test/shape/pi.js',
+silly tar args   'package/test/shape/shape.js',
+silly tar args   'package/test/shape/shapes/circle.js',
+silly tar args   'package/test/src/a.js',
+silly tar args   'package/test/src/b.js',
+silly tar args   'package/test/src/o.js',
+silly tar args   'package/test/src/x.js',
+silly tar args   'package/test/src/c/c.js',
+silly tar args   'package/test/user/index.js',
+silly tar args   'package/test/user/admin/index.js',
+silly tar args   'package/test/browser/test_brequire.html',
+silly tar args   'package/test/browser/lib/brequire.js',
+silly tar args   'package/test/browser/lib/pi.js',
+silly tar args   'package/test/browser/lib/shape.bundle.js',
+silly tar args   'package/test/browser/lib/shape.js',
+silly tar args   'package/test/browser/lib/user_alt.bundle.js',
+silly tar args   'package/test/browser/lib/shapes/circle.js',
+silly tar args   'package/test/browser/lib/single/single.js' ]
+verbose success tar -cvf - <file list elided>
+verbose success gzip "--stdout"
+verbose mkdir done: /Users/weepy/.npm/brequire/0.0.6/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /Users/weepy/.npm/brequire/0.0.6/package
+silly gunzTarPerm modes [ '755', '644' ]
+verbose success gzip "--decompress" "--stdout" "/Users/weepy/.npm/brequire/0.0.6/package.tgz"
+verbose success tar "-mvxpf" "-" "--no-same-owner" "-C" "/Users/weepy/.npm/brequire/0.0.6/___package.npm"
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/History.md
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/LICENSE
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/package.json
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/README.md
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/Tutorial
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/bin/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/bin/brequire
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/bin/install
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/browser/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/browser/brequire.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/lib/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/lib/brequire-async.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/lib/brequire.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/index.html
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/test_all.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/node/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/node/node.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/single/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/single/single.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/a.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/b.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/o.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/x.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/c/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/lib/c/c.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/shape/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/shape/pi.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/shape/shape.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/shape/shapes/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/shape/shapes/circle.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/a.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/b.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/o.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/x.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/c/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/src/c/c.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/user/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/user/index.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/user/admin/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/user/admin/index.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/test_brequire.html
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/brequire.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/pi.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/shape.bundle.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/shape.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/user_alt.bundle.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/shapes/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/shapes/circle.js
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/single/
+silly asyncMap in gTP /Users/weepy/.npm/brequire/0.0.6/___package.npm/package/test/browser/lib/single/single.js
+verbose gunzed /Users/weepy/.npm/brequire/0.0.6/___package.npm/package
+verbose rm'ed /Users/weepy/.npm/brequire/0.0.6/package
+verbose renamed [ '/Users/weepy/.npm/brequire/0.0.6/___package.npm/package',
+verbose renamed   '/Users/weepy/.npm/brequire/0.0.6/package' ]
+silly testEngine { name: 'brequire',
+silly testEngine   version: '0.0.6',
+silly testEngine   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly testEngine   author: { name: 'weepy' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/weepy/brequire/raw/master/LICENSE' } ],
+silly testEngine   directories: { lib: './lib' },
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/weepy/brequire.git' },
+silly testEngine   engines: { node: '>= 0.4.2' },
+silly testEngine   main: './lib/brequire',
+silly testEngine   dependencies: {},
+silly testEngine   devDependencies: {},
+silly testEngine   _id: 'brequire@0.0.6',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.4',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   dist: 
+silly testEngine    { shasum: 'eb6ba896aa04ef60b8133e6703c4a795692b2501',
+silly testEngine      tarball: 'http://registry.npmjs.org/brequire/-/brequire-0.0.6.tgz' },
+silly testEngine   scripts: {} }
+verbose caching /Users/weepy/.npm/brequire/0.0.6/package/package.json
+verbose loadDefaults brequire@0.0.6
+silly updated sha bytes 7468
+info shasum eb6ba896aa04ef60b8133e6703c4a795692b2501
+info shasum /Users/weepy/.npm/brequire/0.0.6/package.tgz
+verbose from cache /Users/weepy/.npm/brequire/0.0.6/package/package.json
+verbose chmod /Users/weepy/.npm/brequire/0.0.6/package.json 644
+verbose chmod /Users/weepy/.npm/brequire/0.0.6/package.tgz 644
+silly publish { name: 'brequire',
+silly publish   version: '0.0.6',
+silly publish   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly publish   author: { name: 'weepy' },
+silly publish   licenses: 
+silly publish    [ { type: 'MIT',
+silly publish        url: 'http://github.com/weepy/brequire/raw/master/LICENSE' } ],
+silly publish   directories: { lib: './lib' },
+silly publish   repository: 
+silly publish    { type: 'git',
+silly publish      url: 'git://github.com/weepy/brequire.git' },
+silly publish   engines: { node: '>= 0.4.2' },
+silly publish   main: './lib/brequire',
+silly publish   dependencies: {},
+silly publish   devDependencies: {},
+silly publish   _id: 'brequire@0.0.6',
+silly publish   _engineSupported: true,
+silly publish   _npmVersion: '1.0.6',
+silly publish   _nodeVersion: 'v0.4.4',
+silly publish   _defaultsLoaded: true,
+silly publish   dist: 
+silly publish    { shasum: 'eb6ba896aa04ef60b8133e6703c4a795692b2501',
+silly publish      tarball: 'http://registry.npmjs.org/brequire/-/brequire-0.0.6.tgz' },
+silly publish   scripts: {} }
+info prepublish brequire@0.0.6
+verbose PUT brequire
+verbose raw, before any munging brequire
+verbose url resolving [ 'http://registry.npmjs.org/', './brequire' ]
+verbose url resolved http://registry.npmjs.org/brequire
+verbose url parsed { protocol: 'http:',
+verbose url parsed   slashes: true,
+verbose url parsed   host: 'registry.npmjs.org',
+verbose url parsed   hostname: 'registry.npmjs.org',
+verbose url parsed   pathname: '/brequire',
+verbose url parsed   href: 'http://registry.npmjs.org/brequire' }
+WARN Sending authorization over insecure channel.
+silly writing json { _id: 'brequire',
+silly writing json   name: 'brequire',
+silly writing json   description: 'Use CommonJS (require, exports) functionality in the browser',
+silly writing json   'dist-tags': {},
+silly writing json   versions: {},
+silly writing json   maintainers: [ { name: 'weepy', email: 'jonahfox@gmail.com' } ] }
+verbose response http://registry.npmjs.org/brequire
+silly chunk {"error":"conflict","reason":"Document update conflict."}
+silly chunk 
+verbose GET brequire
+verbose raw, before any munging brequire
+verbose url resolving [ 'http://registry.npmjs.org/', './brequire' ]
+verbose url resolved http://registry.npmjs.org/brequire
+verbose url parsed { protocol: 'http:',
+verbose url parsed   slashes: true,
+verbose url parsed   host: 'registry.npmjs.org',
+verbose url parsed   hostname: 'registry.npmjs.org',
+verbose url parsed   pathname: '/brequire',
+verbose url parsed   href: 'http://registry.npmjs.org/brequire' }
+verbose response http://registry.npmjs.org/brequire
+silly chunk {"_id":"brequire","_rev":"18-58b386e08541b222238aa12a13119fd9","name":"brequire","description":"Use CommonJS (require, exports) functionality in the browser","dist-tags":{"latest":"0.0.6"},"versions":{"0.0.2":{"name":"brequire","version":"0.0.2","description":"Brings exact CommonJS (require, exports) functionality to the Browser.","author":{"name":"weepy"},"bin":{"brequire":"./bin/brequire"},"repository":"http://github.com/weepy/brequire","dependencies":{},"engines":{"node":">= 0.2.0"},"_id":"brequire@0.0.2","_nodeSupported":true,"_npmVersion":"0.2.7-2","_nodeVersion":"v0.3.1-pre","dist":{"tarball":"http://registry.npmjs.org/brequire/-/brequire-0.0.2.tgz"},"directories":{}},"0.0.3":{"name":"brequire","version":"0.0.3","description":"Use CommonJS (require, exports) functionality in the browser","author":{"name":"weepy"},"licenses":[{"type":"MIT","url":"http://github.com/weepy/brequire/raw/master/LICENSE"}],"directories":{"lib":"./lib","bin":"./bin"},"repository":{"type":"git","url":"git://github.com/weepy/brequire.git"},"dependencies":{"glob":">= 0.2.0"},"engines":{"node":">= 0.4.2","npm":">= 0.3"},"main":"./lib/brequire","_id":"brequire@0.0.3","_engineSupported":true,"_npmVersion":"0.3.15","_nodeVersion":"v0.4.2","bin":{"brequire":"bin/brequire","install":"bin/install"},"files":[""],"_defaultsLoaded":true,"dist":{"shasum":"2a1a8b928d717c4b98eeb783e02b86d6fd7132f1","tarball":"http://registry.npmjs.org/brequire/-/brequire-0.0.3.tgz"}},"0.0.4":{"name":"brequire","version":"0.0.4","description":"Use CommonJS (require, exports) functionality in the browser","author":{"name":"weepy"},"licenses":[{"type":"MIT","url":"http://github.com/weepy/brequire/raw/master/LICENSE"}],"directories":{"lib":"./lib"},"repository":{"type":"git","url":"git://github.com/weepy/brequire.git"},"dependencies":{"glob":">= 0.2.0"},"engines":{"node":">= 0.4.2"},"main":"./lib/brequire","_id":"brequire@0.0.4","_engineSupported":true,"_npmVersion":"1.0.1rc4","_nodeVersion":"v0.4.4","_defaultsLoaded":true,"dist":{"shasum":"7cb5f9fc36f43eb6becc2012186cf0e9002f11cb","tarball":"http://registry.npmjs.org/brequire/-/brequire-0.0.4.tgz"}},"0.0.5":{"name":"brequire","version":"0.0.5","description":"Use CommonJS (require, exports) functionality in the browser","author":{"name":"weepy"},"licenses":[{"type":"MIT","url":"http://github.com/weepy/brequire/raw/master/LICENSE"}],"directories":{"lib":"./lib","bin":"./bin"},"repository":{"type":"git","url":"git://github.com/weepy/brequire.git"},"dependencies":{"glob":">= 0.2.0"},"engines":{"node":">= 0.4.2"},"main":"./lib/brequire","_id":"brequire@0.0.5","_engineSupported":true,"_npmVersion":"0.3.15","_nodeVersion":"v0.4.3","bin":{"brequire":"bin/brequire","install":"bin/install"},"files":[""],"_defaultsLoaded":true,"dist":{"shasum":"f9ab80d889ef1ac25c33439a807416edd9d25717","tarball":"http://registry.npmjs.org/brequire/-/brequire-0.0.5.tgz"}},"0.0.6":{"name":"brequire","version":"0.0.6","description":"Use CommonJS (require, exports) functionality in the browser","author":{"name":"weepy"},"licenses":[{"type":"MIT","url":"http://github.com/weepy/brequire/raw/master/LICENSE"}],"directories":{"lib":"./lib"},"repository":{"type":"git","url":"git://github.com/weepy/brequire.git"},"engines":{"node":">= 0.4.2"},"main":"./lib/brequire","dependencies":{},"devDependencies":{},"_id":"brequire@0.0.6","_engineSupported":true,"_npmVersion":"1.0.6","_nodeVersion":"v0.4.4","_defaultsLoaded":true,"dist":{"shasum":"d0bf3165b81e1f4dd21d920be3bcf5bad993243e","tarball":"http://registry.npmjs.org/brequire/-/brequire-0.0.6.tgz"},"scripts":{}}},"maintainers":[{"name":"weepy","email":"jonahfox@gmail.com"}],"author":{"name":"weepy"},"repository":{"type":"git","url":"git://github.com/weepy/brequire.git"},"time":{"0.0.2":"2011-03-11T11:00:36.040Z","0.0.3":"2011-03-11T11:00:36.040Z","0.0.4":"2011-03-15T10:12:40.373Z","0.0.5":"2011-04-01T15:32:08.534Z","0.0.6":"2011-06-14T14:56:21.521Z"}}
+info Already published brequire@0.0.6
+verbose uploading bin dists []
+ERR! publish fail Cannot publish over existing version.
+ERR! publish fail Bump the 'version' field, set the --force flag, or
+ERR! publish fail     npm unpublish 'brequire@0.0.6'
+ERR! publish fail and try again
+ERR! 
+ERR! System Darwin 10.7.0
+ERR! command "node" "/usr/local/bin/npm" "publish" "."
+verbose exit [ 1, true ]
