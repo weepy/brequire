@@ -1,0 +1,1 @@
+exports.time = require("./time").time
