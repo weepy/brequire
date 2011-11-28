@@ -1,15 +1,9 @@
+// Brequire - CommonJS support for the browser
+
 +function(global) {
+  // Sync Require  
   
-  // Brequire - CommonJS support for the browser
-
-  /********************
-   *****   SYNC   *****
-   ********************/
-  
-  function require(p, async) {
-
-    if(async) return require.async(p, async)
-    
+  var require = function(p) {
     var path = require.resolve(p)
     var module = require.modules[path]
     if(!module) throw("couldn't find module for: " + p)
@@ -33,7 +27,7 @@
   }
 
   require.compile = function(url, text) {
-    return "define('" + url + "', function(module, exports, require) {\n" + text + "\n});"
+    return "define('" + url + "', [], function(module, exports, require) {\n" + text + "\n});"
   }
 
 
@@ -56,78 +50,71 @@
     }
   }
 
-  require.def = function define(path, mod) {
+  function define(path, deps, mod) {
+    mod.deps = deps
     return require.modules[path] = mod;
   }
 
-  var queue = {
-    jobs: [],
-    run: function() {
-      var job = this.jobs[0]
-      var self = this
-      job && job(function() {
-        self.jobs.shift()
-        self.run()
-      })
-    }
+  // EXPORT 
+  global.require = require
+  global.define = require.def = define
+
+}(this)
+
+
+!function(global) {
+  // Adds in async support
+
+  // wrap the sync require module
+  var sync_require = require
+  global.require = function(p, async, deps) {
+    async
+      ? require.async(p, async, deps)
+      : sync_require(p)
   }
+  for(var i in sync_require) require[i] = sync_require[i]
+  
 
-  function folder(path) {
-    var folders = path.split("/")
-    folders.pop()
-    return folders.join("/")
-  }
-
-  /****************** 
-   ***** ASYNC ******
-   ******************/
-
-  var queue = {
-    jobs: [],
-    run: function() {      
-      var job = queue.jobs[0]
-      job && job(function() {
-        queue.jobs.shift()
-        queue.run()
-      })
-    },
-    add: function(job) {
-      queue.jobs.push(job)
-      if(queue.jobs.length == 1) queue.run()
-    }
-  }
-
-  require.async = function(path, callback) {
-    queue.add(function(next) {
-      async_loader(path, function(module) {
-        callback(module)
-        next()
-      })
-    })
-  }
-
-  function async_loader(path, complete) {
-    var mod = require.resolve(path)
-    if(mod) return complete(mod) 
-
-    load_async_module_with_deps(path, function(mod, deps) {
-      +function run() {
-        if(!deps.length) return complete(mod)
-        async_loader(deps.shift(), function() {
-          run()
-        })
-      }()
-    })
-  }
-
-  function load_async_module_with_deps(path, callback) {
+  function load(path, callback) {
+    var mod, l
     if(!path.match(/\.js$/)) path += ".js"
 
+    if(mod = require.resolve(path)) { return callback(mod) }
+
+    if(l = load.loaders[path]) {
+      l.callbacks.push(callback)
+      return l
+    }
+
+    var loader = { callbacks: [callback] }
+
     xhr(path, function(u, text) {
-      var mod = eval(require.compile(path, text) + "//@ sourceURL=" + path)
-      require.def(path, mod)
-      callback(mod, extract_dependencies(text))
+      var mod = require.eval(require.compile(path, text) + "//@ sourceURL=" + path)
+      var deps = extract_dependencies(text)
+      require.def(path, deps, mod)
+      for(var i=0; i<loader.callbacks.length; i++) {
+        loader.callbacks[i](mod, deps)
+      }
     })
+
+    load.loaders[path] = loader
+    return loader
+  }
+
+  load.loaders = {}
+
+  require.async = function(path, callback, deps) {
+    deps = deps || []
+    var our_mod
+    (function run(path) {
+      load(path, function(mod, new_deps) {
+        our_mod || (our_mod = mod) // we want the first one
+        deps = new_deps.concat(deps)
+        var dep = deps.shift()
+        if(!dep) return callback(our_mod)  
+        run(dep)
+      })
+    })(path)
   }
 
   function extract_dependencies(text) {
@@ -148,16 +135,14 @@
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) callback(url, xhr.responseText)
     }
-    try {
+    try { 
       xhr.send(null)
     }
     catch(e) {
-      console.log("failed loading: " + url)
+      console.error("failed loading: " + url)
     }
   }
 
-  // EXPORT 
-  global.require = require
-  global.define = require.def
+}(this)
 
-}(this);
+require.eval = function(text) { return eval(text) }
