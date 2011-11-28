@@ -74,6 +74,19 @@
   }
   for(var i in sync_require) require[i] = sync_require[i]
   
+  require.async = function(path, callback, deps) {
+    deps = deps || []
+    var our_mod
+    (function run(path) {
+      load(path, function(mod, new_deps) {
+        our_mod || (our_mod = mod) // we want the first one
+        deps = new_deps.concat(deps)
+        var dep = deps.shift()
+        if(!dep) return callback(our_mod)  
+        run(dep)
+      })
+    })(path)
+  }
 
   function load(path, callback) {
     var mod, l
@@ -103,19 +116,6 @@
 
   load.loaders = {}
 
-  require.async = function(path, callback, deps) {
-    deps = deps || []
-    var our_mod
-    (function run(path) {
-      load(path, function(mod, new_deps) {
-        our_mod || (our_mod = mod) // we want the first one
-        deps = new_deps.concat(deps)
-        var dep = deps.shift()
-        if(!dep) return callback(our_mod)  
-        run(dep)
-      })
-    })(path)
-  }
 
   function extract_dependencies(text) {
     var requires = text.match(/require\s*\('\s*([^'])*'\s*\)|require\s*\("\s*([^"])*"\s*\)/g)
