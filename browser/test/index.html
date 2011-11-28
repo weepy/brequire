@@ -1,11 +1,27 @@
+<body>
+
+</body>
+
 
 <script src='../brequire.js'></script>
 <script>
 
+function log(x) {
+	document.body.innerHTML += "<p>" + x + "</p>"
+}
 require("./time2", function(time) {
-  console.log(time.time, 1)
+  log(time.time == 1234)
 })
 require("./time", function(time) {
-  console.log(time.time, 2)
+  log(time.time == 1234)
+})
+require("./lib/nested", function(time) {
+  log(time.time == 1234)
+})
+require("./lib/nested2", function(time) {
+  log(time.time == 1234)
+})
+require("./lib/nested3", function(time) {
+  log(time.time == 1234)
 })
 </script>

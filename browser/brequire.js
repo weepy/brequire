@@ -31,7 +31,7 @@
   }
 
 
-  function normalize(path) {
+  function normalize(p, path) {
     var fullPath = path.split('/');
     fullPath.pop();
     var parts = p.split('/');
@@ -46,7 +46,7 @@
   require.bind = function(path) {
     return function(p) {
       if(!p.match(/^\./)) return require(p)
-      return require(normalize(path));
+      return require(normalize(p, path));
     }
   }
 
@@ -68,22 +68,50 @@
   // wrap the sync require module
   var sync_require = require
   global.require = function(p, async, deps) {
-    async
-      ? require.async(p, async, deps)
+    return async 
+      ? require.async(p, async, deps) 
       : sync_require(p)
   }
   for(var i in sync_require) require[i] = sync_require[i]
   
+
+  function dir(file) {
+    var parts = file.split('/');
+    parts.pop();
+    return parts.join("/")
+  }
+
+  function relative(file, dir) {
+    var parts = (dir + "/" + file).split('/');
+    var ret = []
+    
+    for (var i=0; i < parts.length; i++) {        
+      var part = parts[i];
+      if (part == '..') ret.pop();
+      else if (i == 0 || part != '.') ret.push(part);
+    }
+
+    return ret.join("/")
+  }
+
+
   require.async = function(path, callback, deps) {
     deps = deps || []
-    var our_mod
+    deps.unshift(path);
+
     (function run(path) {
       load(path, function(mod, new_deps) {
-        our_mod || (our_mod = mod) // we want the first one
-        deps = new_deps.concat(deps)
-        var dep = deps.shift()
-        if(!dep) return callback(our_mod)  
-        run(dep)
+        deps.splice(deps.indexOf(path), 1)
+        var dep
+        while(dep = new_deps.shift()) {
+          deps.unshift(relative(dep, dir(path)))
+        }
+        
+        if(!deps.length) return callback(require(path)) 
+
+        for(var i=0; i < deps.length; i++) {
+          run(deps[i])
+        }
       })
     })(path)
   }
@@ -92,7 +120,7 @@
     var mod, l
     if(!path.match(/\.js$/)) path += ".js"
 
-    if(mod = require.resolve(path)) { return callback(mod) }
+    if(mod = require.resolve(path)) { return callback(mod, []) }
 
     if(l = load.loaders[path]) {
       l.callbacks.push(callback)
@@ -128,7 +156,7 @@
   }
 
   function xhr(url, callback) {
-    console.log("loading " + url)
+    console.info("loading " + url)
     var xhr = new (window.ActiveXObject || XMLHttpRequest)('Microsoft.XMLHTTP');
     xhr.open('GET', url, true);
     if ('overrideMimeType' in xhr) xhr.overrideMimeType('text/plain');
