@@ -3,6 +3,9 @@
 # replaces the Chrome executable with a script which calls the original executable with the -allow-file-access-from-files argument.
 # pass the path to the Chrome executable as the first argument.
 
+# run like :
+# ./fix_chrome.sh /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome 
+
 original_path="$1"
 base="$(basename "$original_path")"
 new_path="$(dirname "$original_path")/$base-bin"
