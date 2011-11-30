@@ -7,6 +7,8 @@
   global.global = global 
     
   var require = function(p) {
+    if(arguments.length > 1) return require.async.apply(global, arguments) 
+
     var path = require.resolve(p)
     var module = require.modules[path]
     if(!module) return undefined
@@ -58,11 +60,13 @@
   }
 
   require.bind = function(path) {
-    return function(p) {
-      if(!p.match(/^\./)) return require(p)
-      return require(require.relative(p, path));
+    return function() {
+      var args = Array.prototype.slice.call(arguments)
+      if(args[0].match(/^\./)) args[0] = require.relative(args[0], path)
+      return require.apply(this, args)
     }
   }
+
 
   function define(path, deps, mod) {
     mod.deps = deps
@@ -80,21 +84,6 @@
   // EXPORT 
   global.require = require
   global.define = require.def = define
-
-}(this)
-
-// Async support
-!function(global) {
-  
-  // wrap the sync require module
-  var sync_require = require
-  global.require = function(p) {
-    return arguments.length > 1
-      ? require.async.apply(global, arguments) 
-      : sync_require(p)
-  }
-  for(var i in sync_require) require[i] = sync_require[i]
-
 
   require.async = function() {
     var paths = Array.prototype.slice.call(arguments),
@@ -124,14 +113,12 @@
       })
     }
 
-
     for(var i=0; i<paths.length; i++) 
       run(paths[i])
   }
 
   function load(module_name, callback) {
     var mod, l
-
     var ext = module_name.match(/\.[a-zA-Z0-9_]*$/)
     if(ext) {
       var path = module_name  
