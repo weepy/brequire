@@ -29,10 +29,15 @@
     }
   }
 
-  require.compile = function(url, text) {
-    return "define('" + url + "', [], function(module, exports, require) {\n" + text + "\n});"
+  require.compile = function(name, ext, text) {
+    text = require.compilers[ext](text)
+    return "define('" + name + "', [], function(module, exports, require) {\n" + text + "\n});"
   }
-
+  require.compilers = {}
+  require.registerExtension = function(ext, fn) {
+    require.compilers[ext] = fn    
+  }
+  require.registerExtension(".js", function(text) { return text } )
 
   function dir(file) {
     var parts = file.split('/');
@@ -124,9 +129,17 @@
       run(paths[i])
   }
 
-  function load(path, callback) {
+  function load(module_name, callback) {
     var mod, l
-    if(!path.match(/\.js$/)) path += ".js"
+
+    var ext = module_name.match(/\.[a-zA-Z0-9_]*$/)
+    if(ext) {
+      var path = module_name  
+      ext = ext[0]
+    } else {
+      var path = module_name + ".js"
+      ext = ".js"
+    }
 
     if(mod = require.resolve(path)) { return callback(mod, []) }
 
@@ -138,7 +151,7 @@
     var loader = { callbacks: [callback] }
 
     xhr(path, function(u, text) {
-      var mod = require.eval(require.compile(path, text) + "//@ sourceURL=" + u)
+      var mod = require.eval(require.compile(path, ext, text) + "//@ sourceURL=" + u)
       var deps = extract_dependencies(text)
       require.def(path, deps, mod)
       for(var i=0; i<loader.callbacks.length; i++) {
