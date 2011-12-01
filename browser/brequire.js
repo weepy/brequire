@@ -1,12 +1,10 @@
 // Brequire - CommonJS support for the browser
 
+// SYNC MODULE
 +function(global) {
-  // Sync Require  
-  
-  // setup global key in window
   global.global = global 
     
-  var require = function(p) {
+  global.require = function(p) {
     var path = require.resolve(p)
     var module = require.modules[path]
     if(!module) return undefined
@@ -58,13 +56,14 @@
   }
 
   require.bind = function(path) {
-    return function(p) {
-      if(!p.match(/^\./)) return require(p)
-      return require(require.relative(p, path));
+    return function() {
+      var args = Array.prototype.slice.call(arguments)
+      if(args[0].match(/^\./)) args[0] = require.relative(args[0], path)
+      return require.apply(this, args)
     }
   }
 
-  function define(path, deps, mod) {
+  global.define = function(path, deps, mod) {
     mod.deps = deps
     return require.modules[path] = mod;
   }
@@ -77,24 +76,21 @@
     }
   }
 
-  // EXPORT 
-  global.require = require
-  global.define = require.def = define
-
 }(this)
 
-// Async support
-!function(global) {
-  
-  // wrap the sync require module
-  var sync_require = require
-  global.require = function(p) {
-    return arguments.length > 1
-      ? require.async.apply(global, arguments) 
-      : sync_require(p)
-  }
-  for(var i in sync_require) require[i] = sync_require[i]
 
+// ASYNC MODULE
++function(global) {
+
+  var require_sync = require
+  global.require = function(path) {
+    return arguments.length > 1
+      ? require.async.apply(global, arguments)
+      : require.sync(path)
+  }
+  for(var i in require_sync) require[i] = require_sync[i]
+
+  require.sync = require_sync
 
   require.async = function() {
     var paths = Array.prototype.slice.call(arguments),
@@ -111,7 +107,7 @@
 
         if(!deps.length && !new_deps.length) {
           var args = []
-          for(var i=0; i<paths.length; i++) args.push(require(paths[i]))
+          for(var i=0; i<paths.length; i++) args.push(require.sync(paths[i]))
           return callback && callback.apply(global, args)
         }
 
@@ -124,14 +120,12 @@
       })
     }
 
-
     for(var i=0; i<paths.length; i++) 
       run(paths[i])
   }
 
   function load(module_name, callback) {
     var mod, l
-
     var ext = module_name.match(/\.[a-zA-Z0-9_]*$/)
     if(ext) {
       var path = module_name  
@@ -153,7 +147,7 @@
     xhr(path, function(u, text) {
       var mod = require.eval(require.compile(path, ext, text) + "//@ sourceURL=" + u)
       var deps = extract_dependencies(text)
-      require.def(path, deps, mod)
+      define(path, deps, mod)
       for(var i=0; i<loader.callbacks.length; i++) {
         loader.callbacks[i](mod, deps)
       }
@@ -162,7 +156,7 @@
     load.loaders[path] = loader
     return loader
   }
-  // require.load = load
+
   load.loaders = {}
 
 
@@ -182,7 +176,8 @@
     if ('overrideMimeType' in xhr) xhr.overrideMimeType('text/plain');
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        if(xhr.responseText.length == 0) console.error(url + " is zero length")
+        if(xhr.responseText.length == 0) 
+          console.error(url + " is zero length")
         callback(url, xhr.responseText)
       }
     }
