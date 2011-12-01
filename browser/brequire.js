@@ -183,4 +183,11 @@
 
 }(this)
 
-require.eval = function(text) { return eval(text) }
+require.eval = function(text) { 
+  try {
+    return eval(text)
+  } catch(e) {
+    console.error("Failed eval: " + e.toString())
+    console.info(text)    
+  }
+}
