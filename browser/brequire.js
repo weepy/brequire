@@ -180,7 +180,6 @@
       console.error("failed loading: " + url)
     }
   }
-
 }(this)
 
 require.eval = function(text) { 
