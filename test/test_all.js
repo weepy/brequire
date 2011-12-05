@@ -38,34 +38,34 @@ exports.test_paths = function() {
 }
 
 
-exports.test_static = function() {
-  var br = brequire("sam") 
-  br._files().should.eql([ 'index.js',
-    'uglify/parse-js.js',
-    'uglify/process.js' ]
-  )
+// exports.test_static = function() {
+//   var br = brequire("sam") 
+//   br._files().should.eql([ 'index.js',
+//     'uglify/parse-js.js',
+//     'uglify/process.js' ]
+//   )
   
-  br._modules().should.eql([ 'sam/index.js',
-    'sam/uglify/parse-js.js',
-    'sam/uglify/process.js' ]
-  )
+//   br._modules().should.eql([ 'sam/index.js',
+//     'sam/uglify/parse-js.js',
+//     'sam/uglify/process.js' ]
+//   )
   
-  br.module_base("not_sam")
-  br._modules().should.eql([ 'not_sam/index.js',
-    'not_sam/uglify/parse-js.js',
-    'not_sam/uglify/process.js' ]
-  )
-}
+//   br.module_base("not_sam")
+//   br._modules().should.eql([ 'not_sam/index.js',
+//     'not_sam/uglify/parse-js.js',
+//     'not_sam/uglify/process.js' ]
+//   )
+// }
 
 var exec  = require('child_process').exec
 
 exports.test_out = function() {
   brequire("./test/shape")
-    .include_lib()
+    // .include_lib()
     .write("./test/browser/lib/shape.bundle.js")
 
   brequire("./test/shape")
-    .include_lib()
+    // .include_lib()
     .write("./test/browser/lib")
 
   brequire("./test/user")

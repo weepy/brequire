@@ -1,4 +1,4 @@
-require.module('./single.js', function(module, exports, require) {
+define('./single.js', [], function(module, exports, require) {
 // start module: ./single.js
 
 module.exports = "single!"

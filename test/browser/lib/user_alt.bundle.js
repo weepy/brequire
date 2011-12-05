@@ -1,4 +1,4 @@
-require.module('user_alt/admin/index.js', function(module, exports, require) {
+define('user_alt/admin/index.js', [], function(module, exports, require) {
 // start module: user_alt/admin/index.js
 
 module.exports = "admin"
@@ -7,7 +7,7 @@ module.exports = "admin"
 });
 ;
 
-require.module('user_alt/index.js', function(module, exports, require) {
+define('user_alt/index.js', [], function(module, exports, require) {
 // start module: user_alt/index.js
 
 module.exports = require("./admin")

@@ -1,4 +1,4 @@
-require.module('./shapes/circle.js', function(module, exports, require) {
+define('./shapes/circle.js', [], function(module, exports, require) {
 // start module: ./shapes/circle.js
 
 var pi = require("../pi"),
