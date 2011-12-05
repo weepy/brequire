@@ -1,5 +1,4 @@
 +function(global) {
-
   var require_sync = require
   global.require = function(path) {
     return arguments.length > 1
@@ -34,10 +33,8 @@
           deps.unshift(p)
           run(p)
         }
-        
       })
     }
-
     for(var i=0; i<paths.length; i++) 
       run(paths[i])
   }
