@@ -5,9 +5,9 @@ function require(p) {
   if(!module) return
   if(!module.exports) {
     module.exports = {}
-    var mod = module.call(module.exports, module, module.exports, require.bind(path))
+    module.call(module.exports, module, module.exports, require.bind(path))
   }
-  return mod || module.exports
+  return module.exports
 }
 
 require.modules = {}
