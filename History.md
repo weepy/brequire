@@ -1,3 +1,10 @@
+0.1.0
+=====
+
+  * Major rewrite
+  * Now use define instead of require.module, for compatability with AMD
+  * New async api in require.async
+
 0.0.4 
 =====
 
