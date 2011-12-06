@@ -72,7 +72,8 @@ Include in your page
 &lt;script src='browser/require.js'>&lt;/script>
 &lt;script src='my/module.js''>&lt;/script>
 &lt;script>
-app = require("./app")
+var app = require("./app")
+// do stuff with app
 &lt;/script>
 </pre>
 
@@ -90,7 +91,9 @@ Use like:
 &lt;script src='browser/require.js'>&lt;/script>
 &lt;script src='my/module.js''>&lt;/script>
 &lt;script>
-app = require("./app")
+require("./app", function(app) {
+  // do stuff with app  
+})
 &lt;/script>
 </pre>
 
