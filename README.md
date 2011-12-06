@@ -80,7 +80,7 @@ var app = require("./app")
 Async module
 ------------
 
-require.async.js is an option module that hooks into require and provides an asynchronous require that loads modules via xhr. 
+require.async.js is an optional module that hooks into require and provides an asynchronous require that loads modules via xhr. 
 It also determines dependencies via static analysis and they are loaded in parallel. 
 
 Note that require.async will autowrap the module - so there's no need for the server side compilation step.
@@ -96,6 +96,8 @@ require("./app", function(app) {
 })
 &lt;/script>
 </pre>
+
+See example in browser/test/index.html
 
 Notes
 -----
