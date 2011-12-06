@@ -98,9 +98,10 @@ Notes
 -----
 
 
-* require.async uses a regex to determine dependencies, so be careful with 
+* require.async uses a regex to determine dependencies, which is solid with two caveats:
   * require's inside comments
   * dynamic calls to require (which will not be picked up)
+
 * require.async works seemlessly with require, so if a dependency is already available, require.async will return immediately with no xhr
 
 
