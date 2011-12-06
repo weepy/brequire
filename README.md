@@ -107,8 +107,11 @@ Notes
 
 * require.async works seemlessly with require, so if a dependency is already available, require.async will return immediately with no xhr
 
+* CoffeeScript lovers: 
+
 
 Test
 ----
 
+npm install should glob
 expresso

@@ -1,6 +1,4 @@
 define('./shapes/circle.js', [], function(module, exports, require) {
-// start module: ./shapes/circle.js
-
 var pi = require("../pi"),
     shape = require("../shape")
 
@@ -14,6 +12,4 @@ Circle.prototype.area = function() {
   return pi * this.radius * this.radius
 }
 module.exports = Circle
-
-// end module: ./shapes/circle.js
-});
+}); // end module: ./shapes/circle.js

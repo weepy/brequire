@@ -3,12 +3,12 @@ var brequire = require("brequire"),
     fs = require("fs")
 
 exports.test_construct = function() {
-  var br = brequire("./") 
+  var br = brequire.module("./") 
   is.ok(br instanceof brequire)
 }
 
 exports.test_relative = function() {
-  var br = brequire("./test/shape") 
+  var br = brequire.module("./test/shape") 
   br.root.should.eql(__dirname + "/shape")
   br._files().should.eql(["pi.js", "shape.js", "shapes/circle.js"])
   
@@ -25,7 +25,7 @@ exports.test_single_file = function() {
 }
 
 exports.test_paths = function() {
-  var br = brequire("./test/shape").search("*.js","shapes/*.js") 
+  var br = brequire.module("./test/shape").search("*.js","shapes/*.js") 
   br.root.should.eql(__dirname + "/shape")
   // br.paths.should.eql(["*.js"])
   br._files().should.eql(["pi.js", "shape.js", "shapes/circle.js"])
