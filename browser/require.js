@@ -34,7 +34,10 @@ require.relative = function(file, file2) {
 
   for (var i=0; i < parts.length; i++) {        
     var part = parts[i];
-    if (part == '..') ret.pop();
+    if (part == '..') {
+      var last = ret.pop();
+      if(last == "." || !last) ret.push("..")
+    }
     else if (i == 0 || part != '.') ret.push(part);
   }
   return ret.join("/")
