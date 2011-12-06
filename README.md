@@ -30,7 +30,7 @@ set the search paths for the scripts to load from the root. (defaults to '**.js'
 
 wraps each file writes it to disk.
 if _path_ ends with '.js': the files will all be bundled together into one script.
-otherwise path is assumed to be a directroy and each file will be written out separately, the structure mirroring the src directory
+otherwise path is assumed to be a directory and each file will be written out separately, the structure mirroring the src directory
 
 * .module_base(name)
 us this method to change the module base name
