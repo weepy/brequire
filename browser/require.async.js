@@ -70,7 +70,8 @@
     var loader = { callbacks: [callback] }
 
     xhr(path, function(u, text) {
-      var mod = require.globalEval(require.compile(path, ext, text) + "//@ sourceURL=" + u)
+      text = require.compile(path, ext, text)
+      var mod = require.globalEval(text + "//@ sourceURL=" + u)
       var deps = extract_dependencies(text)
       define(path, deps, mod)
       for(var i=0; i<loader.callbacks.length; i++) {
