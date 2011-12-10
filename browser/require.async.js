@@ -19,6 +19,7 @@
 
     function run(path) {
       load(path, function(mod, new_deps) {
+
         deps.splice(deps.indexOf(path), 1)
         var dep
 
@@ -39,15 +40,19 @@
       run(paths[i])
   }
 
-  require.compile = function(name, ext, text) {
-    text = require.compilers[ext](text)
-    return "define('" + name + "', [], function(module, exports, require) {\n" + text + "\n});"
+  function wrap(name, ext, text, deps) {
+    var deps2 = []
+    for(var i =0; i < deps.length; deps++) deps2[i] = "'" + deps[i] + "'"
+    return "define('" + name + "', [" + deps2.join(", ") + "], function(module, exports, require) {\n" + text + "\n});"
   }
-  require.compilers = {}
+
+  var compilers = {
+    ".js": function(text) { return text }
+  }
+
   require.registerExtension = function(ext, fn) {
-    require.compilers[ext] = fn    
+    compilers[ext] = fn
   }
-  require.registerExtension(".js", function(text) { return text } )
 
   function load(module_name, callback) {
     var mod, l
@@ -69,14 +74,23 @@
 
     var loader = { callbacks: [callback] }
 
+    console.log("loading", path)
+    
     xhr(path, function(u, text) {
-      text = require.compile(path, ext, text)
-      var mod = require.globalEval(text + "//@ sourceURL=" + u)
+
+      text = compilers[ext](text)
+      
       var deps = extract_dependencies(text)
+
+      text = wrap(path, ext, text, deps)
+
+      var mod = require.globalEval(text + "//@ sourceURL=" + u)
       define(path, deps, mod)
+      
       for(var i=0; i<loader.callbacks.length; i++) {
         loader.callbacks[i](mod, deps)
       }
+
     })
 
     load.loaders[path] = loader
@@ -111,6 +125,7 @@
       console.error("failed loading: " + url)
     }
   }
+
 }(this)
 
 require.globalEval = function(text) { 

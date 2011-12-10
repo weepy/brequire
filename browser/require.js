@@ -29,16 +29,16 @@ require.relative = function(file, file2) {
     return parts.join("/")
   }
 
-  var parts = (dir(file2) + "/" + file).split('/');
+  var parts = (dir(file2) + "/" + file).split('/')
   var ret = []
 
   for (var i=0; i < parts.length; i++) {        
-    var part = parts[i];
+    var part = parts[i]
     if (part == '..') {
-      var last = ret.pop();
+      var last = ret.pop()
       if(last == "." || !last) ret.push("..")
     }
-    else if (i == 0 || part != '.') ret.push(part);
+    else if (i == 0 || part != '.') ret.push(part)
   }
   return ret.join("/")
 }
@@ -52,9 +52,10 @@ require.bind = function(path) {
 }
 
 function define(path, deps, mod) {
-  mod.deps = deps
-  return require.modules[path] = mod;
+  mod.dependencies = deps
+  return require.modules[path] = mod
 }
+define.amd = {}
 
 require.script = function() {
   for(var i=0; i<arguments.length; i++) {
