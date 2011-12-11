@@ -110,6 +110,12 @@ Notes
 * require.async works seemlessly with require, so if a dependency is already available, require.async will return immediately with no xhr
 
 * CoffeeScript lovers: 
+  * if you want to be able to do require.async("./my.coffee") then just add the following line after coffeescript.js
+  * require.registerExtension('.coffee', CoffeeScript.compile)
+  * note best to load coffeescript before require
+
+
+
 
 
 Test
