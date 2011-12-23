@@ -103,16 +103,16 @@ Notes
 -----
 
 
-* require.async uses a regex to determine dependencies, which is solid with two caveats:
-  * require's inside comments
-  * dynamic calls to require (which will not be picked up)
+* require.async uses a regex to determine dependencies, which is solid with one caveats:
+  * dynamic calls to require will not be picked up, e.g. <code>require(myvar)</code>
+
+* NB require's inside comments are not picked up
 
 * require.async works seemlessly with require, so if a dependency is already available, require.async will return immediately with no xhr
 
 * CoffeeScript lovers: 
   * if you want to be able to do require.async("./my.coffee") then just add the following line after coffeescript.js
   * require.registerExtension('.coffee', CoffeeScript.compile)
-  * note best to load coffeescript before require
 
 
 

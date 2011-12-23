@@ -12,9 +12,10 @@ function require(p) {
 
 require.modules = {}
 
+
 require.resolve = function(path) {
   if(require.modules[path]) return path
-  
+
   if(!path.match(/\.js$/)) {
     if(require.modules[path+".js"]) return path + ".js"
     if(require.modules[path+"/index.js"]) return path + "/index.js"
@@ -23,6 +24,8 @@ require.resolve = function(path) {
 }
 
 require.relative = function(file, file2) {
+  if(!file.match(/^\./)) return file
+
   function dir(file) {
     var parts = file.split('/');
     parts.pop();
@@ -51,11 +54,11 @@ require.bind = function(path) {
   }
 }
 
-function define(path, deps, mod) {
+require.define = function(path, deps, mod) {
   mod.dependencies = deps
   return require.modules[path] = mod
 }
-define.amd = {}
+
 
 require.script = function() {
   for(var i=0; i<arguments.length; i++) {

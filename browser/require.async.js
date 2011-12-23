@@ -1,4 +1,4 @@
-+function(global) {
+!function(global) {
   var require_sync = require
   global.require = function(path) {
     return arguments.length > 1
@@ -10,40 +10,48 @@
   require.sync = require_sync
   
   require.async = function() {
-    var paths = Array.prototype.slice.call(arguments),
-        callback = typeof paths[paths.length-1] == "function" && paths.pop(),
+    var modules = Array.prototype.slice.call(arguments),
+        callback = typeof modules[modules.length-1] == "function" && modules.pop(),
         deps = []
     
-    for(var i=0; i<paths.length; i++) 
-      deps.push(paths[i])
+    for(var i=0; i<modules.length; i++) 
+      deps.push(modules[i])
 
-    function run(path) {
-      load(path, function(mod, new_deps) {
+    function run(module) {
 
-        deps.splice(deps.indexOf(path), 1)
+      load(module, function(mod, new_deps) {
+        deps.splice(deps.indexOf(module), 1)
+        
         var dep
-
+        
         if(!deps.length && !new_deps.length) {
           var args = []
-          for(var i=0; i<paths.length; i++) args.push(require(paths[i]))
+          for(var i=0; i<modules.length; i++)
+            args.push(require(modules[i]))
+          
           return callback && callback.apply(global, args)
+            // && setTimeout(function() { callback.apply(global, args) }, 0)
         }
 
+        var to_run = []
         while(dep = new_deps.shift()) {
-          var p = require.relative(dep, path)
+          var p = require.relative(dep, module)
           deps.unshift(p)
-          run(p)
+          to_run.unshift(p)
         }
+
+        // run them after adding to avoid race condition
+        while(dep = to_run.shift()) run(dep)
       })
     }
-    for(var i=0; i<paths.length; i++) 
-      run(paths[i])
+    for(var i=0; i<modules.length; i++) 
+      run(modules[i])
   }
 
   function wrap(name, ext, text, deps) {
     var deps2 = []
     for(var i =0; i < deps.length; deps++) deps2[i] = "'" + deps[i] + "'"
-    return "define('" + name + "', [" + deps2.join(", ") + "], function(module, exports, require) {\n" + text + "\n});"
+    return "require.define('" + name + "', [" + deps2.join(", ") + "], function(module, exports, require) {\n" + text + "\n});"
   }
 
   var compilers = {
@@ -54,9 +62,16 @@
     compilers[ext] = fn
   }
 
+  require.sysPath = function(path) {
+    return "./" + path
+  }
+
   function load(module_name, callback) {
     var mod, l
     var ext = module_name.match(/\.[a-zA-Z0-9_]*$/)
+    
+    // if(module_name.match(/^[^.]/)) module_name = require.sysPath(module_name)
+
     if(ext) {
       var path = module_name  
       ext = ext[0]
@@ -65,32 +80,39 @@
       ext = ".js"
     }
 
-    if(mod = require.resolve(path)) { return callback(mod, []) }
+    if(!path.match(/^\./)) path = require.sysPath(path)
+  
+    
 
+    if(mod = require.resolve(path)) { return callback(mod, []) }
     if(l = load.loaders[path]) {
       l.callbacks.push(callback)
       return l
     }
 
     var loader = { callbacks: [callback] }
-
-    console.log("loading", path)
     
-    xhr(path, function(u, text) {
-
-      text = compilers[ext](text)
+    XHR(path, function(u, text) {
+      try {
+        text = compilers[ext](text)
+      }
+      catch(e) {
+        console.error("Error during compile: ", e)
+        throw e 
+      }
       
       var deps = extract_dependencies(text)
+      text = wrap(module_name, ext, text, deps)
 
-      text = wrap(path, ext, text, deps)
-
-      var mod = require.globalEval(text + "//@ sourceURL=" + u)
-      define(path, deps, mod)
-      
-      for(var i=0; i<loader.callbacks.length; i++) {
-        loader.callbacks[i](mod, deps)
+      try {
+        var mod = require.globalEval(text + "//@ sourceURL=" + u)  
+      } catch(e) {
+        throw "Syntax Error in " + path + ": " + e.toString()
       }
-
+      
+      require.define(path, deps, mod)
+      for(var i=0; i<loader.callbacks.length; i++)
+        loader.callbacks[i](mod, deps)
     })
 
     load.loaders[path] = loader
@@ -98,24 +120,39 @@
   }
   load.loaders = {}
 
-  function extract_dependencies(text) {
-    var requires = text.match(/require\s*\('\s*([^'])*'\s*\)|require\s*\("\s*([^"])*"\s*\)/g) || []
+  var regex = {
+    all: /require\s*\('\s*([^'])*'\s*\)|require\s*\("\s*([^"])*"\s*\)/g,
+    start: /require\s*\(\s*["']/,
+    end: /["']\s*\)$/,
+    comments: /\/\*.+?\*\/|\/\/.*(?=[\n\r])/g   // or /(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm
+  }
 
+  function extract_dependencies(text) {
+    text = text.replace(regex.comments, '')
+    var requires = text.match(regex.all) || []
     for(var i=0; i< requires.length; i++) {
-      requires[i] = requires[i].replace(/^require\s*\(\s*["']/, "").replace(/["']\s*\)$/,"")
+      requires[i] = requires[i].replace(regex.start, "").replace(regex.end, "")
     }
     return requires
   }
 
-  function xhr(url, callback) {
-    // console.info("loading " + url)
+  function XHR(url, callback) {
+    console.info("loading " + url)
     var xhr = new (window.ActiveXObject || XMLHttpRequest)('Microsoft.XMLHTTP');
     xhr.open('GET', url, true);
     if ('overrideMimeType' in xhr) xhr.overrideMimeType('text/plain');
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        if(xhr.responseText.length == 0) console.error(url + " is zero length")
-        callback(url, xhr.responseText)
+        if(xhr.responseText.length == 0) {
+          if(url.match(/\.js$/)) {
+            if(!url.match(/index\.js$/)) 
+              XHR(url.replace(/\.js$/, "/index.js"), callback)
+          }
+          console.error(url + " is zero length")
+        } else {
+          callback(url, xhr.responseText)  
+        }
+        
       }
     }
     try { 
