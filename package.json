@@ -1,5 +1,5 @@
 {
-  "name": "browser-require",
+  "name": "brequire",
   "version": "1.0.0",
   "description": "Dropin require polyfill for the browser.",
   "main": "require.js",
