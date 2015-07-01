@@ -1,3 +1,3 @@
 module.exports = {
-	time: 1234
+  a: 1
 }

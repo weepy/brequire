@@ -1,1 +1,0 @@
-exports.time = 1234

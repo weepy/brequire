@@ -1,125 +1,30 @@
-Brequire
-========
+# require
 
-Brings exact CommonJS (require, exports) functionality to the Browser.
+Dropin `require` polyfill for the browser
 
-It has three parts:
+Really useful in development for when you don't want to crank up browserify.
 
-1) A simple compiler that wraps your files in a closure that injects bound of require and exports, so you can use the exact same code client side.
+Super simple.
 
-2) A client side library that provides a require keyword
+Fully swappable with browserify and friends in production.
 
-3) An optional clientside asynchronous require module
+# Installation
 
-Install
-------
-
-npm install brequire
-
-API
----
-
-Create a an instance of the compiler with <code>require("brequire").module("path/to/my/module")</code>
-
-The various options can then be set via method calls: 
-
-* .search(path, /* path2, path3 etc... */) 
-set the search paths for the scripts to load from the root. (defaults to '**.js')
-
-* .write(path) 
-
-wraps each file writes it to disk.
-if _path_ ends with '.js': the files will all be bundled together into one script.
-otherwise path is assumed to be a directory and each file will be written out separately, the structure mirroring the src directory
-
-* .module_base(name)
-us this method to change the module base name
-
-* .inspect()
-output the current state of the compiler including the files to be processed (for debugging purposes)
+1) Include the script and serve it (it won't work direct from the filesystem due to browser security)
 
 
-Example Usage
----
-
-<pre>
-var brequire = require("brequire")
-
-brequire
-  .module("./test/shape")
-  .write("./lib/shape.bundle.js")
-</pre>
-
-<pre>
-brequire
-  .module("./test/shape")
-  .write("./test/browser/lib")
-</pre>
-
-<pre>
-brequire
-  .module("./test/user")
-  .module_base("user_alt")
-  .inspect()
-  .write("./test/browser/lib/user.bundle.js")
-</pre>
+```
+<script src='require.js'></script>
+```
 
 
-Include in your page
--------------------
+2) Code like a boss
 
-<pre>
-&lt;script src='browser/require.js'>&lt;/script>
-&lt;script src='my/module.js''>&lt;/script>
-&lt;script>
-var app = require("./app")
-// do stuff with app
-&lt;/script>
-</pre>
+3) You can optionally include the PARSEJS library which will help point point any syntax errors in your code whilst
 
-Async module
-------------
+# Production
 
-require.async.js is an optional module that hooks into require and provides an asynchronous require that loads modules via xhr. 
-It also determines dependencies via static analysis and they are loaded in parallel. 
+It uses Sync XHR which is great for development, but not so much in production.
 
-Note that require.async will autowrap the module - so there's no need for the server side compilation step.
+Forunately, you can swap out this library with browserify or similar in production.
 
-Use like:
-
-<pre>
-&lt;script src='browser/require.js'>&lt;/script>
-&lt;script src='my/module.js''>&lt;/script>
-&lt;script>
-require("./app", function(app) {
-  // do stuff with app  
-})
-&lt;/script>
-</pre>
-
-See example in browser/test/index.html
-
-Notes
------
-
-
-* require.async uses a regex to determine dependencies, which is solid with one caveats:
-  * dynamic calls to require will not be picked up, e.g. <code>require(myvar)</code>
-
-* NB require's inside comments are not picked up
-
-* require.async works seemlessly with require, so if a dependency is already available, require.async will return immediately with no xhr
-
-* CoffeeScript lovers: 
-  * if you want to be able to do require.async("./my.coffee") then just add the following line after coffeescript.js
-  * require.registerExtension('.coffee', CoffeeScript.compile)
-
-
-
-
-
-Test
-----
-
-npm install should glob
-expresso

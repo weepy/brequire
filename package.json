@@ -1,16 +1,8 @@
 {
-  "name": "brequire",
-  "version": "0.0.6",
-  "description": "Use CommonJS (require, exports) functionality in the browser",
+  "name": "browser-require",
+  "version": "1.0.0",
+  "description": "Dropin require polyfill for the browser.",
+  "main": "require.js",
   "author": "weepy",
-  "licenses":     [{
-    "type":       "MIT",
-    "url": "http://github.com/weepy/brequire/raw/master/LICENSE"
-  }],
-  "directories" : {
-    "lib" : "./lib"
-  },
-  "repository": "http://github.com/weepy/brequire",
-  "engines" : { "node": ">= 0.4.2"},
-  "main": "./lib/brequire"
+  "license": "MIT"
 }
