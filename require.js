@@ -19,7 +19,7 @@
           , __dirname = bits.join('/')
 
         
-        mod.call(mod.exports, mod, mod.exports, require.relative(path), __filename, __dirname);
+        mod.call(null, mod, mod.exports, require.relative(path), __filename, __dirname);
       }
       return mod.exports;
     }
@@ -71,6 +71,25 @@
       };
     };
 
+
+  var compilers = require.compilers = {
+    js: function(text) {
+      return text
+    },
+    json: function(text) {
+        try {
+          JSON.parse(text)
+        } catch(e) {
+          console.error("BAD JSON @ " + text, e)
+          return  
+        }
+        return "module.exports = " + text
+    },
+    txt: function(text) {
+        return "module.exports = " + JSON.stringify(text)
+    }
+  }
+
   // weepy: following added
   require.load = function( path ) {
 
@@ -95,26 +114,14 @@
       
       console.log("xhr: ", path, " loaded ", request.responseText.length, " bytes")
 
-      if(ext == "json") {
-        try {
-          JSON.parse(data)
-        } catch(e) {
-          console.error("BAD JSON @ " + path, e)
-          return  
-        }
-        data = "module.exports = " + data
-      }
-      else if(ext == "js") {
+      var compiler = compilers[ext] || compilers.txt
 
-      }
-      else {
-        // STRING
-        data = "module.exports = " + JSON.stringify(data)
-      }
+      var output = compiler(data) || ""
 
+    
       var text = "require.register('" + orig_path + "', \
               function(module, exports, require, __filename, __dirname) {\n\n" 
-              + data + "\n\n\
+              + output+ "\n\n\
             }); //@ sourceURL=" + path;    
 
       try {
@@ -133,7 +140,11 @@
         } else {
           console.error( "Syntax Error in file " + path + ": " + e.toString() )
         }
-      }
+      }        
+    
+
+
+
 
       return require.modules[ orig_path ];
     }

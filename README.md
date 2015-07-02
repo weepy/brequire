@@ -17,10 +17,36 @@ Fully swappable with browserify and friends in production.
 <script src='require.js'></script>
 ```
 
+or use it direct from rawgit
+
+```
+<script src='//rawgit.com/weepy/brequire/master/require.js'></script>
+```
+
 
 2) Code like a boss
 
 3) You can optionally include the PARSEJS library which will help point point any syntax errors in your code whilst
+
+# Compilers
+
+You can add compilers for coffeescript, css, JSX or whatever in very simply by registering a handler like 
+
+```
+require.compilers.css = function(text) {
+
+    var style = document.createElement('style');
+	style.appendChild(document.createTextNode(text));
+	document.head.appendChild(style);
+}
+```
+
+This will allow you to include css on page like :
+
+```
+require("./style.css")
+```
+
 
 # Production
 

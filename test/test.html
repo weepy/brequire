@@ -1,10 +1,38 @@
+<body></body>
 <script src="../require.js"></script>
-<!-- <script src="_build.js"></script> -->
+<script src="./lib/jade.js"></script>
 
 <script>
-var d = new Date
+
+
+
+require.compilers.css = function(text) {
+
+    var style = document.createElement('style');
+	style.appendChild(document.createTextNode(text));
+	document.head.appendChild(style);
+}
+
+require.compilers.jade = function(text) {
+	return "module.exports = " + JSON.stringify(jade.render(text))
+}
+
+
+</script>
+
+<script>
 var b = require('b')
 console.assert(b.hello == 'world')
 console.assert(b.boo.boo == 'boo')
-console.log("OK, took", new Date - d)
+
+var text = require("text.txt")
+console.assert( text, "HELLO!")
+
+// INCLUDE CSS
+require("style.css")
+
+
+document.body.innerHTML += require("page.jade")
+
+
 </script>

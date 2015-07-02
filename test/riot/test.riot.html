@@ -1,0 +1,39 @@
+<body></body>
+<script src="../../require.js"></script>
+
+<todo></todo>
+
+<script>
+var jade = require("../lib/jade")
+
+var riot = require("./riot")
+require("./compiler")
+
+require.compilers.css = function(text) {
+  var style = document.createElement('style');
+	style.appendChild(document.createTextNode(text));
+	document.head.appendChild(style);
+}
+
+
+require.compilers.tag = function(text) {
+	riot.compile(text)
+}
+
+require("todo.css")
+require("todo.tag")
+
+
+riot.mount('todo', {
+  title: 'I want to behave!',
+  items: [
+    { title: 'Avoid excessive coffeine', done: true },
+    { title: 'Hidden item', hidden: true },
+    { title: 'Be less provocative' },
+    { title: 'Be nice to people' }
+  ]
+})
+	
+
+
+</script>
