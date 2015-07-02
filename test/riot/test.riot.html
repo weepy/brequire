@@ -15,9 +15,8 @@ require.compilers.css = function(text) {
 	document.head.appendChild(style);
 }
 
-
 require.compilers.tag = function(text) {
-	riot.compile(text)
+  return "module.exports = " + riot.compile(text, true)
 }
 
 require("todo.css")

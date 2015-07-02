@@ -308,7 +308,8 @@ riot.compile = function(arg, fn) {
     // compile & return
     if (arg.trim()[0] == '<') {
       var js = unindent(compile(arg))
-      if (!fn) globalEval(js)
+      if (!fn) 
+        globalEval(js)
       return js
 
     // URL
