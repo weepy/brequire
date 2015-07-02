@@ -1,6 +1,6 @@
 {
   "name": "brequire",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repo": "https://github.com/weepy/brequire",
   "description": "Dropin require polyfill for the browser. Also supports compilation, e.g. babel, css, JSX",
   "main": "require.js",
